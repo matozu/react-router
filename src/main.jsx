@@ -1,21 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import {createBrowserRouter,RouterProvider } from "react-router-dom"
-import './index.css'
-import ErrorPage from './error-page'
-import Contact, {
-  loader as contactLoader,
-} from "./routes/contact";
-import Root, { loader as rootLoader, action as rootAction, } from "./routes/root";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import ErrorPage from "./error-page";
+import Contact, { loader as contactLoader } from "./routes/contact";
+import Root, {
+  loader as rootLoader,
+  action as rootAction,
+} from "./routes/root";
 import EditContact, { action as editAction } from "./routes/edit";
-import { action as destroyAction } from "./routes/destroy" 
-import Index from "./routes/index"
-
+import { action as destroyAction } from "./routes/destroy";
+import Index from "./routes/index";
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element: <Root/>,
+    path: "/",
+    element: <Root />,
     errorElement: <ErrorPage />,
     loader: rootLoader,
     action: rootAction,
@@ -38,16 +38,14 @@ const router = createBrowserRouter([
       {
         path: "contacts/:contactId/destroy",
         action: destroyAction,
-        errorElement: <div>Oops!... I Did It Again</div>
+        errorElement: <div>Oops!... I Did It Again</div>,
       },
     ],
-
   },
-  
-])
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router = {router} />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} basename="/react-router" />
+  </React.StrictMode>
+);
