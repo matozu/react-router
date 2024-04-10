@@ -4,6 +4,6 @@ import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "http://localhost:5173/react-router/",
-  // base: "https://matozu.github.io/react-router/",
+  // base: "http://localhost:5173/react-router/",
+  base: "https://matozu.github.io/react-router/",
 });
