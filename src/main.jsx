@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import ErrorPage from "./error-page";
-import Contact, { loader as contactLoader } from "./routes/contact";
+import Contact, { loader as contactLoader, action as contactAction } from "./routes/contact";
 import Root, {
   loader as rootLoader,
   action as rootAction,
@@ -21,6 +21,8 @@ const router = createBrowserRouter([
     action: rootAction,
     children: [
       {
+        errorElement: <ErrorPage />,
+        children: [ {
         index: true,
         element: <Index />,
       },
@@ -28,6 +30,7 @@ const router = createBrowserRouter([
         path: "contacts/:contactId",
         element: <Contact />,
         loader: contactLoader,
+        action: contactAction
       },
       {
         path: "contacts/:contactId/edit",
@@ -39,7 +42,9 @@ const router = createBrowserRouter([
         path: "contacts/:contactId/destroy",
         action: destroyAction,
         errorElement: <div>Oops!... I Did It Again</div>,
-      },
+      }
+    ],
+    },
     ],
   },
 ]);
